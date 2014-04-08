@@ -63,7 +63,7 @@ List::insert(int pos, double value)
       return;
     }
   Node* curr = head;
-  for (int i{0}; i < pos - 1; ++i)
+  for (int i{0}; i <= pos; ++i)
     // if pos is greater than list, stop at end node
       if (curr->next != nullptr)
 	curr = curr->next;
@@ -79,7 +79,7 @@ List::erase(int pos)
   if (head == nullptr)
       return;
   Node* curr = head;
-  for (int i{0}; i < pos - 1; ++i)
+  for (int i{0}; i <= pos; ++i)
     if (curr->next != nullptr)
       curr = curr->next;
   Node* target = curr->next;
@@ -87,18 +87,47 @@ List::erase(int pos)
   delete target;
 }
 
-// reverses a sublist between indices m, n in-place in one pass
+// reverses a sublist between indices [m, n] in-place in one pass
 void
 List::reverse_sublist(int m, int n)
 {
-
+  Node* front;
+  Node* last;
+  Node* prev;
+  Node* curr = head;
+  for (int i{0}; curr != nullptr; ++i)
+    {
+      Node* future = curr->next;
+      if (i == m - 1) // before front of sublist
+	{
+	  front = curr;
+	}
+      else if (i == m) // at front of sublist
+	{
+	  last = curr;
+	}
+      else if (i > m and i <= n) // inside sublist
+	{
+	  curr->next = prev;
+	}
+      if (i == n) // at end of sublist
+	{
+	  front->next = curr;
+	  last->next = future;
+	  return;
+	}
+      prev = curr;
+      curr = future;
+    }
 }
 
 int
 main()
 {
   List list;
-  for (int i{1}; i <= 16; ++i)
+  for (int i{0}; i <= 16; ++i)
     list.append(i);
+  list.print();
+  list.reverse_sublist(0, 16);
   list.print();
 }
