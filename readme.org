@@ -1,0 +1,22 @@
+* Purpose
+
+So this is a REALLY stupid singly linked list, the sole purpose of
+which was to answer a colleague's question about implementing an
+algorithm to reverse a sublist in-place, in one pass.
+
+* Caveats
+
+This is REALLY BAD CODE. For god's sake the list type is a struct. It
+is all in one file. There is no makefile nor no configure file. It is
+C-ish C++ (the latter used for =<iostream>=, universal brace
+initialization, and nullptr, C++11 features of which I have become a
+fan). There is no CLI; change the numbers and recompile old-school
+style.
+
+* Compiling
+
+Given =g++-4.8=, compile like thus:
+
+#+INCLUDE_SRC sh
+g++ -Wall -std=gnu++11 main.cpp
+#+END_SRC
