@@ -127,7 +127,12 @@ main()
   List list;
   for (int i{0}; i <= 16; ++i)
     list.append(i);
+  std::cout << "Original list:\n";
   list.print();
+  std::cout << "Reversing from m = 2 to n = 8:\n";
+  list.reverse_sublist(2, 8);
+  list.print();
+  std::cout << "Reversing the result from m = 0 to n = 16:\n";
   list.reverse_sublist(0, 16);
   list.print();
 }
