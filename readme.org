@@ -17,6 +17,6 @@ style.
 
 Given =g++-4.8=, compile like thus:
 
-#+INCLUDE_SRC sh
-g++ -Wall -std=gnu++11 main.cpp
+#+BEGIN_SRC sh
+g++-4.8 -Wall -std=gnu++11 main.cpp
 #+END_SRC
